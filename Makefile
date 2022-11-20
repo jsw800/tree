@@ -1,5 +1,6 @@
 deploy:
 	rsync -av --exclude=images \
+	    --exclude=.git \
 	    --exclude=images_annotated \
 	    --exclude=bak_images \
 	    --exclude=.idea \
