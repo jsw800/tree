@@ -8,7 +8,7 @@ import threading
 
 """
     This file runs on a machine with an onboard camera.
-    It connects to the server (server.py) running on the raspberry pi and sends
+    It connects to the server (detector_server.py) running on the raspberry pi and sends
     messages to the server so that it iteratively turns on each successive light,
     captures an image of the scene with that light on and saves the image to the directory
     supplied as the first arg of the program.

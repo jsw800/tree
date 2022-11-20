@@ -140,7 +140,7 @@ def main(out_path):
         points_to_use = [p for p in points if p['confidence'] > CONFIDENCE_THRESHOLD]
         if len(points_to_use) == 0:
             points_to_use = points
-        z_coords = [p['coord'][1] for p in points_to_use]
+        z_coords = [p['coord'][0] for p in points_to_use]
         z = sum(z_coords) // len(z_coords)
 
         # get x coord
@@ -148,7 +148,7 @@ def main(out_path):
         points_to_use = [p for p in points if p['confidence'] > CONFIDENCE_THRESHOLD]
         if len(points_to_use) == 0:
             points_to_use = points
-        x_coords = [p['coord'][0] for p in points_to_use]
+        x_coords = [p['coord'][1] for p in points_to_use]
         x = sum(x_coords) // len(x_coords)
 
         # get y coord
@@ -156,7 +156,7 @@ def main(out_path):
         points_to_use = [p for p in points if p['confidence'] > CONFIDENCE_THRESHOLD]
         if len(points_to_use) == 0:
             points_to_use = points
-        y_coords = [p['coord'][0] for p in points_to_use]
+        y_coords = [p['coord'][1] for p in points_to_use]
         y = sum(y_coords) // len(y_coords)
 
         out_coords.append([x, y, z])

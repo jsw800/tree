@@ -19,6 +19,7 @@ class LEDTree(object):
     def render_frame(self, render_fn):
         rgb = (render_fn() * 255).astype(np.uint8)
         self._set_rgb_pixels(rgb)
+        sleep(0.01)
 
     def _set_rgb_pixels(self, pixels):
         for i, pixel in enumerate(pixels):
