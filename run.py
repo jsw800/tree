@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import signal
 from helpers import load_coords, get_effect, parse_args
@@ -24,6 +25,7 @@ def main():
     signal.signal(signal.SIGINT, sigint_handler)
     for frame in effect(coords):
         tree.render_frame(frame)
+        time.sleep(0.01)
 
 if __name__ == '__main__':
     main()
