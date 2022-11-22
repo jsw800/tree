@@ -3,7 +3,8 @@ import numpy as np
 import math
 
 
-DELTA = 1.0
+DELTA_THETA = 1.0
+DELTA_HUE = 0.001
 CONSTANT_AXIS = 2
 
 
@@ -11,9 +12,10 @@ class Effect:
     def __init__(self, points):
         self.points = points
         self.theta = 0.0
-        self.center_point = (np.max(self.points, axis=0) - np.min(self.points, axis=0)) / 2
+        # translate the points so they are centered around 0, this makes it easier to do the calculations
+        center_point = (np.max(self.points, axis=0) - np.min(self.points, axis=0)) / 2
         self.points -= np.min(self.points, axis=0)
-        self.points -= self.center_point
+        self.points -= center_point
         self.hue_1 = 0.0
         self.hue_2 = 0.5
 
@@ -24,7 +26,8 @@ class Effect:
         return self.render
 
     def render(self):
-        which = math.tan(math.radians(self.theta)) * self.points[:, 1] <= self.points[:, 2]
+        axes = [a for a in [0, 1, 2] if a != CONSTANT_AXIS]
+        which = math.tan(math.radians(self.theta)) * self.points[:, axes[0]] <= self.points[:, axes[1]]
         hsv = np.zeros((self.points.shape[0], 3))
         if 90 < self.theta <= 270:
             which = np.invert(which)
@@ -40,5 +43,9 @@ class Effect:
         return rgb
 
     def _update(self):
-        self.theta += DELTA
-        self.theta = self.theta % 360
+        self.theta += DELTA_THETA
+        self.theta %= 360
+        self.hue_1 += DELTA_HUE
+        self.hue_1 %= 1
+        self.hue_2 += DELTA_HUE
+        self.hue_2 %= 1
