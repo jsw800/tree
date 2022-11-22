@@ -24,10 +24,9 @@ class Effect:
         return self.render
 
     def render(self):
-        print(self.theta)
         which = math.tan(math.radians(self.theta)) * self.points[:, 1] <= self.points[:, 2]
         hsv = np.zeros((self.points.shape[0], 3))
-        if self.theta > 90 and self.theta <= 270:
+        if 90 < self.theta <= 270:
             which = np.invert(which)
         for i, value in enumerate(which):
             if value:
