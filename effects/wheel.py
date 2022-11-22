@@ -36,7 +36,6 @@ class Effect:
         hsv[:, 1] = 0.8
         hsv[:, 2] = 0.9
         rgb = matplotlib.colors.hsv_to_rgb(hsv)
-        # rgb = np.random.random_sample(self.points.shape)
         self._update()
         return rgb
 
