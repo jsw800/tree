@@ -15,7 +15,7 @@ import neopixel
     turn on when you need it.
 """
 
-pixels = neopixel.NeoPixel(board.D18, 100, auto_write=False)
+pixels = neopixel.NeoPixel(board.D18, 200, auto_write=False)
 
 def main():
     loop = asyncio.get_event_loop()
@@ -53,6 +53,7 @@ def main():
         print("Goodbye!")
     finally:
         loop.close()
+
 
 if __name__ == "__main__":
     main()

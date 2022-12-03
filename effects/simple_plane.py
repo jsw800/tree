@@ -1,8 +1,8 @@
 import numpy as np
-import matplotlib
+import matplotlib.colors
 
 
-AXIS = 2
+AXIS = 1
 ON_AMOUNT = 0.4
 SPEED = 10.0
 

@@ -1,17 +1,25 @@
+import open3d
+
+
 class TestTree(object):
     def __init__(self, points):
-        import pptk
-        import subprocess
         import numpy as np
         self.points = points
-        self.viewer = pptk.viewer(self.points, np.zeros(self.points.shape))
-        # hack to fix https://github.com/heremaps/pptk/issues/24
-        self.viewer._process.stderr = subprocess.DEVNULL
-        self.viewer.set(point_size=0.005)
+        self.pcd = open3d.geometry.PointCloud()
+        self.pcd.points = open3d.utility.Vector3dVector(self.points)
+        self.vis = open3d.visualization.VisualizerWithKeyCallback()
+        self.vis.create_window()
+        self.vis.add_geometry(self.pcd)
+        self.vis.run()
+        opt = self.vis.get_render_option()
+        opt.background_color = np.asarray([0.1, 0.1, 0.1])
 
     def off(self):
-        self.viewer.close()
+        pass
 
     def render_frame(self, frame):
         rgb = frame()
-        self.viewer.attributes(rgb)
+        self.pcd.colors = open3d.utility.Vector3dVector(rgb)
+        self.vis.update_geometry(self.pcd)
+        self.vis.update_renderer()
+        self.vis.poll_events()

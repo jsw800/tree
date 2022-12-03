@@ -75,9 +75,19 @@ def main():
         ws.send(str(i))
         time.sleep(0.2)
         capture_image(cam, i)
+
+    ws.close()
+
+    ws = create_connection('ws://10.0.0.50:8765')
+    for i in range(100, 200):
+        ws.send(str(i))
+        time.sleep(0.2)
+        capture_image(cam, i)
+
+    ws.close()
   
     cam.release()
 
 
 if __name__ == "__main__":
-  main()
+    main()

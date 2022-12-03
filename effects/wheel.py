@@ -4,7 +4,7 @@ import math
 
 
 DELTA_THETA = 1.0
-DELTA_HUE = 0.001
+DELTA_HUE = 0.0015
 CONSTANT_AXIS = 2
 
 
@@ -37,7 +37,7 @@ class Effect:
             else:
                 hsv[i, 0] = self.hue_2
         hsv[:, 1] = 0.8
-        hsv[:, 2] = 0.9
+        hsv[:, 2] = 0.5
         rgb = matplotlib.colors.hsv_to_rgb(hsv)
         self._update()
         return rgb

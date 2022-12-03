@@ -68,6 +68,7 @@ def main(out_path):
         width = test_image.shape[1]
         height = test_image.shape[0]
     files = os.listdir('images/x')
+    files = [x for x in files if x != '.DS_Store']
     # sort by image number
     files = sorted(files, key=lambda x: int(x.split('.')[0]))
     x_files = ['images/x/' + f for f in files]
@@ -160,6 +161,10 @@ def main(out_path):
         y = sum(y_coords) // len(y_coords)
 
         out_coords.append([x, y, z])
+
+    # TODO correct the coords
+
+    # TODO translate and scale everything to fit [-1, 1] on x and y axes, [0, inf) on z axis
 
     with open(out_path, 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
