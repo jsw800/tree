@@ -162,9 +162,23 @@ def main(out_path):
 
         out_coords.append([x, y, z])
 
-    # TODO correct the coords
+    # TODO correct the coords?
 
-    # TODO translate and scale everything to fit [-1, 1] on x and y axes, [0, inf) on z axis
+    out_coords = np.array(out_coords, dtype=np.float64)
+    minx = np.min(out_coords[:, 0])
+    maxx = np.max(out_coords[:, 0])
+    centerx = (maxx + minx) / 2
+    miny = np.min(out_coords[:, 1])
+    maxy = np.max(out_coords[:, 1])
+    centery = (maxy + miny) / 2
+    out_coords[:, 0] -= centerx
+    out_coords[:, 1] -= centery
+
+    scale_factor = np.max(out_coords[:, 0])
+    out_coords /= scale_factor
+
+    maxz = np.max(out_coords[:, 2])
+    out_coords[:, 2] = maxz - out_coords[:, 2]
 
     with open(out_path, 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)

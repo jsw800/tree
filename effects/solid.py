@@ -6,14 +6,17 @@ import time
 
 COLOR = (0.4, 0.4, 0.4)
 
+INDEX = 30
 
 class Effect:
     def __init__(self, points):
         self.points = points
         self.colors = np.zeros((self.points.shape[0], 3))
-        self.colors[:, 0] = COLOR[0]
-        self.colors[:, 1] = COLOR[1]
-        self.colors[:, 2] = COLOR[2]
+        print(self.points[INDEX])
+        self.colors[INDEX] = COLOR[0]
+        # self.colors[:, 0] = COLOR[0]
+        # self.colors[:, 1] = COLOR[1]
+        # self.colors[:, 2] = COLOR[2]
 
     def __iter__(self):
         return self

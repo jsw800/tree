@@ -2,9 +2,9 @@ import numpy as np
 import random
 
 
-BASE_COLOR = np.array([76, 153, 14], dtype=np.float64) / 255
+BASE_COLOR = np.array([74, 128, 29], dtype=np.float64) / 255
 # FLICKER_COLOR = np.array([250, 218, 7], dtype=np.float64) / 255
-FLICKER_COLOR = np.array([250, 31, 7], dtype=np.float64) / 255
+FLICKER_COLOR = np.array([214, 23, 2], dtype=np.float64) / 255
 NUM_FLICKERING = 45
 SLOWDOWN_FACTOR = NUM_FLICKERING
 

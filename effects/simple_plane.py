@@ -2,9 +2,9 @@ import numpy as np
 import matplotlib.colors
 
 
-AXIS = 1
+AXIS = 2
 ON_AMOUNT = 0.4
-SPEED = 10.0
+SPEED = 100.0
 
 
 class Effect:
@@ -13,6 +13,7 @@ class Effect:
         self.axis_points = self.points[:, AXIS]
         self.max = np.max(self.axis_points)
         self.min = np.min(self.axis_points)
+        self.size = self.max - self.min
         self.plane_location = self.max
         self.hue = 0.0
         self.down = True
@@ -25,9 +26,9 @@ class Effect:
 
     def _update(self):
         if self.down:
-            self.plane_location -= SPEED
+            self.plane_location -= (self.size / SPEED)
         else:
-            self.plane_location += SPEED
+            self.plane_location += (self.size / SPEED)
         if self.plane_location <= self.min:
             self.down = False
         if self.plane_location >= self.max:

@@ -3,9 +3,9 @@ import numpy as np
 import math
 
 
-DELTA_THETA = 1.0
+DELTA_THETA = 2.0
 DELTA_HUE = 0.0015
-CONSTANT_AXIS = 2
+CONSTANT_AXIS = 1
 
 
 class Effect:
