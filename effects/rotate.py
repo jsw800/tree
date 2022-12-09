@@ -3,7 +3,7 @@ import time
 from helpers import get_effect
 
 
-EFFECTS = ['wheel', 'stripes', 'flicker']
+EFFECTS = ['wheel', 'stripes', 'flicker', 'ripples']
 TIME_TO_ROTATE = 60*2            # seconds
 
 
