@@ -14,13 +14,17 @@ MAX_VELOCITY = 0.05
 class Effect:
     def __init__(self, points):
         self.points = points
-        self.max_r = math.sqrt(np.max(points[:, 2]) ** 2 + 8) * 3 / 4
-        self.xmin = -1
-        self.xmax = 1
-        self.ymin = -1
-        self.ymax = 1
-        self.zmin = 0
+        self.xmin = np.min(points[:, 0])
+        self.xmax = np.max(points[:, 0])
+        self.ymin = np.min(points[:, 1])
+        self.ymax = np.max(points[:, 1])
+        self.zmin = np.min(points[:, 2])
         self.zmax = np.max(points[:, 2])
+        self.max_r = math.sqrt(
+            (self.xmax - self.xmin) ** 2 +
+            (self.ymax - self.ymin) ** 2 +
+            (self.zmax - self.zmin) ** 2
+        )
         self.sphere = self._gen_random_sphere()
         self.colors = np.zeros((self.points.shape[0], 3))
         self.colors[:, 1] = 0.9

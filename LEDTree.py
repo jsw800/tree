@@ -1,6 +1,7 @@
 from time import sleep
 import numpy as np
 
+
 class LEDTree(object):
     def __init__(self, points, num_pixels):
         import board
@@ -9,7 +10,7 @@ class LEDTree(object):
         self.num_pixels = num_pixels
         self.neopixel = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False, brightness=0.5, pixel_order=neopixel.RGB)
         self.off()
-        sleep(2)
+        sleep(1)
 
 
     def off(self):

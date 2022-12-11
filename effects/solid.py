@@ -6,7 +6,7 @@ import time
 
 COLOR = (0.4, 0.4, 0.4)
 
-INDEX = 30
+INDEX = 81
 
 class Effect:
     def __init__(self, points):

@@ -4,7 +4,7 @@ from helpers import get_effect
 
 
 EFFECTS = ['wheel', 'stripes', 'flicker', 'ripples']
-TIME_TO_ROTATE = 60*2            # seconds
+TIME_TO_ROTATE = 120            # seconds
 
 
 # rotate is a higher order effect which rotates between a few effects
