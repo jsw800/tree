@@ -1,6 +1,6 @@
 import math
 import numpy as np
-import time
+import colors as rgb
 
 
 THETA = 45
@@ -49,9 +49,9 @@ class Effect:
         transformed = (np.floor(self.zs + self.transform) / 2)
         for i, element in enumerate(transformed):
             if element.is_integer():
-                colors[i] = (214 / 255, 23 / 255, 2 / 255)
+                colors[i] = rgb.RED
             else:
-                colors[i] = (74 / 255, 128 / 255, 29 / 255)
+                colors[i] = rgb.GREEN
         self.transform += DELTA
         self.transform %= STRIPES_AT_ONCE * 2
         return colors

@@ -1,12 +1,11 @@
 import numpy as np
 import random
+import colors as rgb
 
 
-BASE_COLOR = np.array([74, 128, 29], dtype=np.float64) / 255
-# FLICKER_COLOR = np.array([250, 218, 7], dtype=np.float64) / 255
-FLICKER_COLOR = np.array([214, 23, 2], dtype=np.float64) / 255
+BASE_COLOR = rgb.GREEN
+FLICKER_COLOR = rgb.RED
 NUM_FLICKERING = 45
-SLOWDOWN_FACTOR = NUM_FLICKERING
 
 
 class Effect:
@@ -34,10 +33,9 @@ class Effect:
 
     def _update(self):
         self.iteration += 1
-        self.iteration %= SLOWDOWN_FACTOR
-        INTERVAL = SLOWDOWN_FACTOR // NUM_FLICKERING
+        self.iteration %= NUM_FLICKERING
         for i in range(NUM_FLICKERING):
-            if self.iteration == INTERVAL * i:
+            if self.iteration == i:
                 self.indices[i] = random.randint(0, len(self.points) - 1)
         self._reset_colors()
         for index in self.indices:
