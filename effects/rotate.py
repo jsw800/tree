@@ -5,7 +5,7 @@ from BaseEffect import BaseEffect
 
 
 EFFECTS = ['wheel', 'stripes', 'flicker', 'ripples']
-TIME_TO_ROTATE = 5            # seconds
+TIME_TO_ROTATE = 120            # seconds
 
 
 # rotate is a higher order effect which rotates between a few effects
@@ -23,6 +23,7 @@ class Effect(BaseEffect):
         self.effect_index += 1
         self.effect_index %= len(self.effects)
         self.max_fps = self.effects[self.effect_index].max_fps
+        self.color_mode = self.effects[self.effect_index].color_mode
 
     def update(self):
         now = time.time()
