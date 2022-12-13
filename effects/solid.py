@@ -1,30 +1,24 @@
-import time
-
 import numpy as np
 import time
+from BaseEffect import BaseEffect
 
 
 COLOR = (0.4, 0.4, 0.4)
 
 INDEX = 81
 
-class Effect:
+
+class Effect(BaseEffect):
+
     def __init__(self, points):
-        self.points = points
-        self.colors = np.zeros((self.points.shape[0], 3))
+        super().__init__(points)
+        self.max_fps = 1
         print(self.points[INDEX])
         self.colors[INDEX] = COLOR[0]
         # self.colors[:, 0] = COLOR[0]
         # self.colors[:, 1] = COLOR[1]
         # self.colors[:, 2] = COLOR[2]
 
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        return self.render
-
-    def render(self):
-        time.sleep(5)
-        return self.colors
+    def update(self):
+        pass
 

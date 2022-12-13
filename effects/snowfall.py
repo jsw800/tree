@@ -1,7 +1,6 @@
-import time
-
 import numpy as np
 import random
+from BaseEffect import BaseEffect
 
 BASE_COLOR = np.array([0, 0, 0], dtype=np.float64) / 255
 SNOW_COLOR = np.array([150, 150, 150], dtype=np.float64) / 255
@@ -44,10 +43,9 @@ class Sphere:
         return np.linalg.norm(np.array((self.x, self.y, self.z)) - xyz)
 
 
-class Effect:
+class Effect(BaseEffect):
     def __init__(self, points):
-        self.points = points
-        self.colors = np.zeros((self.points.shape[0], 3))
+        super().__init__(points)
         self.min_z = np.max(self.points[:, 2])
         top_center = (
             (np.max(self.points[:, 0]) + np.min(self.points[:, 0])) / 2,
@@ -56,17 +54,7 @@ class Effect:
         )
         self.spheres = [Sphere(top_center[0], top_center[1], top_center[2]) for _ in range(NUM_SPHERES)]
 
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        return self.render
-
-    def render(self):
-        self._update()
-        return self.colors
-
-    def _update(self):
+    def update(self):
         # update spheres
         for sphere in self.spheres:
             sphere.update()

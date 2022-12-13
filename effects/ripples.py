@@ -1,19 +1,23 @@
-import matplotlib.colors
 import numpy as np
 import math
 import random
+from BaseEffect import BaseEffect, ColorMode
 
 NUM_SPHERES = 1
-MIN_VELOCITY = 0.025
+MIN_VELOCITY = 0.03
 MAX_VELOCITY = 0.05
+
 
 """
     [x, y, z, r, r_velocity, hue]
 """
 
-class Effect:
+
+class Effect(BaseEffect):
+
     def __init__(self, points):
-        self.points = points
+        super().__init__(points)
+        self.color_mode = ColorMode.HSV
         self.xmin = np.min(points[:, 0])
         self.xmax = np.max(points[:, 0])
         self.ymin = np.min(points[:, 1])
@@ -30,12 +34,6 @@ class Effect:
         self.colors[:, 1] = 0.9
         self.colors[:, 2] = 0.4
 
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        return self.render
-
     def _gen_random_sphere(self):
         return np.array([
                 random.uniform(self.xmin, self.xmax),
@@ -46,7 +44,7 @@ class Effect:
                 random.uniform(0, 1),
         ], dtype=np.float64)
 
-    def _update(self):
+    def update(self):
         self.sphere[3] += self.sphere[4]
         if self.sphere[3] > self.max_r or self.sphere[4] == 0:
             self.sphere = self._gen_random_sphere()
@@ -55,8 +53,3 @@ class Effect:
         for j, show in enumerate(to_show):
             if show:
                 self.colors[j, 0] = self.sphere[5]
-
-    def render(self):
-        self._update()
-        return matplotlib.colors.hsv_to_rgb(self.colors)
-

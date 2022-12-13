@@ -17,8 +17,8 @@ class LEDTree(object):
         self.neopixel.fill((0, 0, 0))
         self.neopixel.show()
 
-    def render_frame(self, render_fn):
-        rgb = (render_fn() * 255).astype(np.uint8)
+    def render_frame(self, colors):
+        rgb = (colors * 255).astype(np.uint8)
         self._set_rgb_pixels(rgb)
 
     def _set_rgb_pixels(self, pixels):

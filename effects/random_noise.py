@@ -1,11 +1,10 @@
-def effect(points):
-    import numpy as np
-    import time
+import numpy as np
+from BaseEffect import BaseEffect
 
-    def random_noise():
-        rgb = np.random.random_sample(points.shape)
-        return rgb
 
-    while True:
-        time.sleep(0.1)
-        yield random_noise
+class Effect(BaseEffect):
+    def __init__(self, points):
+        super().__init__(points)
+
+    def update(self):
+        self.colors = np.random.random_sample(self.colors.shape)

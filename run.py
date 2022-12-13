@@ -1,12 +1,14 @@
 import time
 import signal
+import matplotlib.colors
 from helpers import load_coords, get_effect, parse_args
+from BaseEffect import ColorMode
 
 
 def main():
     args = parse_args()
     coords = load_coords(args.coords_file)
-    effect = get_effect(args.effect)
+    Effect = get_effect(args.effect)
     if args.test:
         from TestTree import TestTree
         tree = TestTree(coords)
@@ -23,9 +25,18 @@ def main():
         exit(0)
 
     signal.signal(signal.SIGINT, sigint_handler)
-    for frame in effect(coords):
+    last_render = time.time()
+    effect = Effect(coords)
+    for frame in effect:
+        if effect.color_mode == ColorMode.HSV:
+            frame = matplotlib.colors.hsv_to_rgb(frame)
         tree.render_frame(frame)
-        time.sleep(0.01)
+        time_between_frames = time.time() - last_render
+        last_render = time.time()
+        expected_time_between_frames = 1 / effect.max_fps
+        to_sleep = expected_time_between_frames - time_between_frames
+        if to_sleep >= 0:
+            time.sleep(to_sleep)
 
 
 if __name__ == '__main__':

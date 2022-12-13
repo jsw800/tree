@@ -17,8 +17,7 @@ class TestTree(object):
     def off(self):
         pass
 
-    def render_frame(self, frame):
-        rgb = frame()
+    def render_frame(self, rgb):
         self.pcd.colors = open3d.utility.Vector3dVector(rgb)
         self.vis.update_geometry(self.pcd)
         self.vis.update_renderer()
