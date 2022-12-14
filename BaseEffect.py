@@ -8,7 +8,6 @@ class ColorMode(Enum):
     HSV = 1
 
 
-# TODO
 class BaseEffect(ABC):
 
     def __init__(self, points):

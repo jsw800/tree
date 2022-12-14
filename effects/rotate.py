@@ -5,7 +5,7 @@ from BaseEffect import BaseEffect
 
 
 EFFECTS = ['wheel', 'stripes', 'flicker', 'ripples', 'snowfall']
-TIME_TO_ROTATE = 120            # seconds
+TIME_TO_ROTATE = 5            # seconds
 
 
 # rotate is a higher order effect which rotates between a few effects
@@ -18,6 +18,7 @@ class Effect(BaseEffect):
         self.last_swap = time.time()
         self.effect_index = 0
         self.max_fps = self.effects[0].max_fps
+        self.color_mode = self.effects[0].color_mode
 
     def rotate(self):
         self.effect_index += 1
@@ -30,4 +31,6 @@ class Effect(BaseEffect):
         if now - self.last_swap > TIME_TO_ROTATE:
             self.rotate()
             self.last_swap = now
+            self.color_mode = self.effects[self.effect_index].color_mode
+            self.max_fps = self.effects[self.effect_index].max_fps
         self.colors = next(self.effects[self.effect_index])
