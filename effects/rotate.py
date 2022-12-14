@@ -5,7 +5,7 @@ from BaseEffect import BaseEffect
 
 
 EFFECTS = ['wheel', 'stripes', 'flicker', 'ripples', 'snowfall']
-TIME_TO_ROTATE = 5            # seconds
+TIME_TO_ROTATE = 120            # seconds
 
 
 # rotate is a higher order effect which rotates between a few effects
