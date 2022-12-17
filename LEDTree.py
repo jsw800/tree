@@ -3,12 +3,12 @@ import numpy as np
 
 
 class LEDTree(object):
-    def __init__(self, points, num_pixels):
+    def __init__(self, points):
         import board
         import neopixel
         self.points = points
-        self.num_pixels = num_pixels
-        self.neopixel = neopixel.NeoPixel(board.D18, num_pixels, auto_write=False, brightness=0.5, pixel_order=neopixel.RGB)
+        self.num_pixels = len(points)
+        self.neopixel = neopixel.NeoPixel(board.D18, self.num_pixels, auto_write=False, brightness=0.5, pixel_order=neopixel.RGB)
         self.off()
         sleep(1)
 

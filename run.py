@@ -17,7 +17,7 @@ def main():
         tree = RemoteTree(args.url, coords)
     else:
         from LEDTree import LEDTree
-        tree = LEDTree(coords, int(args.num_pixels))
+        tree = LEDTree(coords)
 
     def sigint_handler(sig, frame):
         tree.off()

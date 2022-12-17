@@ -27,12 +27,6 @@ class Effect(BaseEffect):
         super().__init__(points)
         self.color_mode = ColorMode.HSV
         self.max_z = np.max(self.points[:, 2])
-        self.hue = 0.0
-        self.top_center = np.array([
-            (np.max(self.points[:, 0]) + np.min(self.points[:, 0])) / 2,
-            (np.max(self.points[:, 1]) + np.min(self.points[:, 1])) / 2,
-            np.max(self.points[:, 2]) + 1
-        ], dtype=np.float64)
         self.spheres = np.zeros((NUM_SPHERES, 7), dtype=np.float64)
         for i in range(NUM_SPHERES):
             self.spheres[i] = self._gen_random_sphere()
