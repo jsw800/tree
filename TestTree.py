@@ -15,10 +15,10 @@ class TestTree(object):
         opt.point_size = 7.5
         opt.background_color = np.asarray([0.1, 0.1, 0.1])
 
-    def off(self):
+    async def off(self):
         pass
 
-    def render_frame(self, rgb):
+    async def render_frame(self, rgb):
         self.pcd.colors = open3d.utility.Vector3dVector(rgb)
         self.vis.update_geometry(self.pcd)
         self.vis.update_renderer()

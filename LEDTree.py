@@ -13,11 +13,11 @@ class LEDTree(object):
         sleep(1)
 
 
-    def off(self):
+    async def off(self):
         self.neopixel.fill((0, 0, 0))
         self.neopixel.show()
 
-    def render_frame(self, colors):
+    async def render_frame(self, colors):
         rgb = (colors * 255).astype(np.uint8)
         self._set_rgb_pixels(rgb)
 

@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from enum import Enum
+import inspect
 import numpy as np
 
 
@@ -17,14 +18,23 @@ class BaseEffect(ABC):
         self.color_mode = ColorMode.RGB
         self.max_fps = 60
 
-    def __iter__(self):
+    def __aiter__(self):
         return self
 
-    def __next__(self):
+    async def __anext__(self):
         if self.__started:
-            self.update()
+            if inspect.iscoroutinefunction(self.update):
+                await self.update()
+            else:
+                self.update()
         self.__started = True
         return self.colors
+
+    # this coroutine function allows effects to tie into the
+    # event loop to watch for any async stuff they might need
+    # by default does nothing, but can override in child classes
+    async def coroutine(self):
+        pass
 
     @abstractmethod
     def update(self):

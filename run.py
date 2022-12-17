@@ -1,3 +1,5 @@
+import asyncio
+import threading
 import time
 import signal
 import matplotlib.colors
@@ -19,25 +21,34 @@ def main():
         from LEDTree import LEDTree
         tree = LEDTree(coords)
 
-    def sigint_handler(sig, frame):
-        tree.off()
+    async def sigint_handler(sig, frame):
+        await tree.off()
         print('Goodbye!')
         exit(0)
 
     signal.signal(signal.SIGINT, sigint_handler)
-    last_render = time.time()
     effect = Effect(coords)
-    for frame in effect:
-        if effect.color_mode == ColorMode.HSV:
-            frame = matplotlib.colors.hsv_to_rgb(frame)
-        tree.render_frame(frame)
-        time_between_frames = time.time() - last_render
-        last_render = time.time()
-        expected_time_between_frames = 1 / effect.max_fps
-        to_sleep = expected_time_between_frames - time_between_frames
-        if to_sleep >= 0:
-            time.sleep(to_sleep)
 
+    async def game_loop():
+        effect_iter = aiter(effect)
+        while True:
+            start = time.time()
+            frame = await anext(effect_iter)
+            await tree.render_frame(frame)
+            end = time.time()
+            time_to_sleep = max(0, (1 / effect.max_fps) - (end - start))
+            await asyncio.sleep(time_to_sleep)
+
+    async def run():
+        effect_coroutine = effect.coroutine()
+        return await asyncio.gather(effect_coroutine, game_loop())
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        loop.run_until_complete(run())
+    finally:
+        loop.close()
 
 if __name__ == '__main__':
     main()
