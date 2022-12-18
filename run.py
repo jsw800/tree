@@ -8,6 +8,8 @@ from BaseEffect import ColorMode
 
 
 def main():
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     args = parse_args()
     coords = load_coords(args.coords_file)
     Effect = get_effect(args.effect)
@@ -21,12 +23,12 @@ def main():
         from LEDTree import LEDTree
         tree = LEDTree(coords)
 
-    async def sigint_handler(sig, frame):
-        await tree.off()
+    def sigint_handler():
+        tree.off()
         print('Goodbye!')
         exit(0)
 
-    signal.signal(signal.SIGINT, sigint_handler)
+    loop.add_signal_handler(signal.SIGINT, sigint_handler)
     effect = Effect(coords)
 
     async def game_loop():
@@ -43,8 +45,6 @@ def main():
         effect_coroutine = effect.coroutine()
         return await asyncio.gather(effect_coroutine, game_loop())
 
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
     try:
         loop.run_until_complete(run())
     finally:

@@ -15,7 +15,7 @@ class TestTree(object):
         opt.point_size = 7.5
         opt.background_color = np.asarray([0.1, 0.1, 0.1])
 
-    async def off(self):
+    def off(self):
         pass
 
     async def render_frame(self, rgb):

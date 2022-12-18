@@ -12,8 +12,7 @@ class LEDTree(object):
         self.off()
         sleep(1)
 
-
-    async def off(self):
+    def off(self):
         self.neopixel.fill((0, 0, 0))
         self.neopixel.show()
 
