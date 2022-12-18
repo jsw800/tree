@@ -4,7 +4,15 @@ from helpers import get_effect
 from BaseEffect import BaseEffect
 
 
-EFFECTS = ['wheel', 'stripes', 'flicker', 'ripples', 'snowfall', 'strand']
+EFFECTS = [
+    'wheel',
+    'stripes',
+    'flicker',
+    'ripples',
+    'snowfall',
+    'strand',
+    'perlin',
+]
 TIME_TO_ROTATE = 120            # seconds
 
 
