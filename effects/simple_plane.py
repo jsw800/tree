@@ -3,7 +3,7 @@ import matplotlib.colors
 import math
 
 
-AXIS = 2
+AXIS = 1
 ON_AMOUNT = 0.4
 SPEED = 100.0
 DELTA_HUE = 0.002

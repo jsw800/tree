@@ -4,6 +4,7 @@ import sys
 import csv
 from PIL import Image, ImageDraw
 from scipy import signal
+from helpers import write_coords, light_fixer
 
 """
     This file will read the images taken by camera.py, determine the x/y
@@ -180,10 +181,9 @@ def main(out_path):
     maxz = np.max(out_coords[:, 2])
     out_coords[:, 2] = maxz - out_coords[:, 2]
 
-    with open(out_path, 'w', newline='') as csvfile:
-        csv_writer = csv.writer(csvfile)
-        for out_coord in out_coords:
-            csv_writer.writerow(out_coord)
+    # out_coords = light_fixer(out_coords)
+
+    write_coords(out_path, out_coords)
 
 
 if __name__ == '__main__':
