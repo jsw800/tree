@@ -51,7 +51,7 @@ sides.
 To run the detector script on the generated images, simply run
 
 ```bash
-python run.py <path to csv output file>
+python detector.py <path to csv output file>
 ```
 
 This should take a couple minutes and will create a CSV output file with the 3D coords
