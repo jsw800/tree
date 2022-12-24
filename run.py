@@ -12,9 +12,9 @@ def main():
     if args.test:
         from TestTree import TestTree
         tree = TestTree(coords)
-    elif args.remote:
-        from RemoteTree import RemoteTree
-        tree = RemoteTree(args.url, coords)
+    # elif args.remote:
+    #     from RemoteTree import RemoteTree
+    #     tree = RemoteTree(args.url, coords)
     else:
         from LEDTree import LEDTree
         tree = LEDTree(coords)
