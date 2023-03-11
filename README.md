@@ -63,3 +63,11 @@ blink out its index in binary to figure out which index the bad lights are, and 
 you can manually correct the value in the csv file at that index.
 
 Once that's done, you should be good to go!
+
+# Live videos
+
+Perlin noise:
+
+https://drive.google.com/uc?export=download&id=1kCHi-PUhB6r8DEIrgCr12qjl-Enfwtjs
+
+
