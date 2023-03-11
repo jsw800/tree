@@ -66,8 +66,6 @@ Once that's done, you should be good to go!
 
 # Live videos
 
-Perlin noise:
-
-<a href="https://drive.google.com/uc?export=download&id=1kCHi-PUhB6r8DEIrgCr12qjl-Enfwtjs"><img src="https://drive.google.com/uc?export=download&id=1kCHi-PUhB6r8DEIrgCr12qjl-Enfwtjs"></a>
+https://drive.google.com/drive/folders/1rN0WDR0LE3Q-MQGVBDCReFB7eG0X1IwH?usp=share_link
 
 
