@@ -66,6 +66,6 @@ Once that's done, you should be good to go!
 
 # Live videos
 
-https://drive.google.com/drive/folders/1rN0WDR0LE3Q-MQGVBDCReFB7eG0X1IwH?usp=share_link
+https://photos.app.goo.gl/k13BaMM5o8aXpEmq6
 
 
