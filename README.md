@@ -68,6 +68,6 @@ Once that's done, you should be good to go!
 
 Perlin noise:
 
-https://drive.google.com/uc?export=download&id=1kCHi-PUhB6r8DEIrgCr12qjl-Enfwtjs
+<a href="https://drive.google.com/uc?export=download&id=1kCHi-PUhB6r8DEIrgCr12qjl-Enfwtjs"><img src="https://drive.google.com/uc?export=download&id=1kCHi-PUhB6r8DEIrgCr12qjl-Enfwtjs"></a>
 
 
