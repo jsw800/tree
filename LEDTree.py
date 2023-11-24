@@ -8,7 +8,7 @@ class LEDTree(object):
         import neopixel
         self.points = points
         self.num_pixels = len(points)
-        self.neopixel = neopixel.NeoPixel(board.D18, self.num_pixels, auto_write=False, brightness=0.5, pixel_order=neopixel.RGB)
+        self.neopixel = neopixel.NeoPixel(board.D18, self.num_pixels, auto_write=False, brightness=0.4, pixel_order=neopixel.RGB)
         self.off()
         sleep(1)
 

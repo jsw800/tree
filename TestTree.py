@@ -10,6 +10,8 @@ class TestTree(object):
         self.vis = open3d.visualization.Visualizer()
         self.vis.create_window()
         self.vis.add_geometry(self.pcd)
+        # show axes on visualization
+        self.vis.get_render_option().show_coordinate_frame = True
         self.vis.run()
         opt = self.vis.get_render_option()
         opt.point_size = 7.5

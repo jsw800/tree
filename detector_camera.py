@@ -85,6 +85,13 @@ def main():
         capture_image(cam, i)
 
     ws.close()
+
+    ws = create_connection('ws://10.0.0.50:8765')
+    for i in range(200, 300):
+        ws.send(str(i))
+        time.sleep(0.2)
+        capture_image(cam, i)
+    ws.close()
   
     cam.release()
 
