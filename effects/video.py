@@ -2,7 +2,7 @@ import cv2
 from BaseEffect import BaseEffect, ColorMode
 from helpers import process_image
 
-VIDEO_NAME = 'videos/snow2.mov'
+VIDEO_NAME = 'videos/tennis.mp4'
 
 def generate_frames(video_name, points):
     cap = cv2.VideoCapture(video_name)
@@ -10,7 +10,7 @@ def generate_frames(video_name, points):
     while cap.isOpened():
         ret, frame = cap.read()
         if ret:
-            frames.append(process_image(points, frame))
+            frames.append(process_image(points, frame) / 2.0)
         else:
             break
     cap.release()

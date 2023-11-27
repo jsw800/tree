@@ -6,4 +6,5 @@ deploy:
 	    --exclude=.idea \
 	    --exclude=__pycache__ \
 	    --exclude=*/__pycache__ \
+	    --exclude=venv \
 	    -e ssh ./ pi@jesseraspberrypi.local:/home/pi/Documents/tree

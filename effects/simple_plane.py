@@ -1,6 +1,14 @@
 import numpy as np
 from BaseEffect import BaseEffect, ColorMode
 
+"""
+    This effect slides a plane of lights back and forth along the axis defines in the AXIS variable.
+
+    The use case for this is to quickly locate lights that are not correctly detected and mark them
+    for manual correction. You should change AXIS to each axis to check for bad coordinates in each
+    direction (0 = X, 1 = Y, 2 = Z).
+"""
+
 
 AXIS = 2
 ON_AMOUNT = 0.4
