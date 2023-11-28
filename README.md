@@ -83,6 +83,25 @@ python renormalize.py <input_csv> <output_csv>
 
 Once that's done, you should be good to go!
 
+## Note On Dependencies
+
+I'm sure there are much better ways of handling package management with python but I am inexperienced in
+python so this is currently a bit of a mess. I'm using a virtualenv with python 3.9, and the following
+libraries:
+
+- numpy
+- opencv (aka cv2)
+- open3d (only needed if you're running in test mode/with the point cloud viewer)
+  - Note: I had trouble installing this on a MacBook with an M2 processor with python >3.9, which is why I'm
+    using python 3.9 and not any of the newer python versions.
+- `rpi_ws281x` and `adafruit-circuitpython-neopixel` (only needed if you're running live on the raspberry pi)
+- skikit-learn
+
+I may be missing some in this list, my approach is to just start running things and as soon as you get an
+ImportError, install the missing dependency ¯\\\_(ツ)\_/¯ It's a little hard to document these consistently
+since in actuality different libraries may be needed on different machines (i.e. on the rpi vs on your
+development machine/machine running the detector camera).
+
 # Live videos
 
 https://photos.app.goo.gl/k13BaMM5o8aXpEmq6
